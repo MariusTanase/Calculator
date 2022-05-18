@@ -1,51 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Simple calculator</title>
-  </head>
 
-  <body>
-    <section class="calculator">
-      <div class="calculator__display">
-        <p class="calculator__display-text">123456789042</p>
-      </div>
-      
-      <div class="calculator__button-wrapper">
-        <div class="calculator__buttons-top">
-          <button class="calculator__button functional">CLEAR</button>
-          <button class="calculator__button functional">REMOVE</button>
-          <button class="calculator__button functional">+/-</button>
-          <button class="calculator__button operator">%</button>
-        </div>
-        <div class="calculator__buttons-bottom">
-          <div class="calculator_buttons-numbers">
-            <button class="calculator__button number">1</button>
-            <button class="calculator__button number">2</button>
-            <button class="calculator__button number">3</button>
-            <button class="calculator__button number">4</button>
-            <button class="calculator__button number">5</button>
-            <button class="calculator__button number">6</button>
-            <button class="calculator__button number">7</button>
-            <button class="calculator__button number">8</button>
-            <button class="calculator__button number">9</button>
-            <button class="calculator__button number">0</button>
-            <button class="calculator__button number">.</button>
-            <button class="calculator__button number">=</button>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Simple calculator</title>
+</head>
 
-          <div class="calculator__buttons-operators">
-            <button class="calculator__button operator">+</button>
-            <button class="calculator__button operator">-</button>
-            <button class="calculator__button operator">*</button>
-            <button class="calculator__button operator">/</button>
-          </div>
+<body>
+  <section class="calculator">
+    <div class="calculator__display">
+      <p class="calculator__display-text"></p>
+    </div>
+
+    <div class="calculator__button-wrapper">
+      <div class="calculator__buttons-top">
+        <button value="clear" class="calculator__button functional">CLEAR</button>
+        <button value="remove" class="calculator__button functional">REMOVE</button>
+        <button value="PoN" class="calculator__button functional">+/-</button>
+        <button value="%" class="calculator__button operator">%</button>
+      </div>
+      <div class="calculator__buttons-bottom">
+        <div class="calculator_buttons-numbers">
+          <button value="1" class="calculator__button number">1</button>
+          <button value="2" class="calculator__button number">2</button>
+          <button value="3" class="calculator__button number">3</button>
+          <button value="4" class="calculator__button number">4</button>
+          <button value="5" class="calculator__button number">5</button>
+          <button value="6" class="calculator__button number">6</button>
+          <button value="7" class="calculator__button number">7</button>
+          <button value="8" class="calculator__button number">8</button>
+          <button value="9" class="calculator__button number">9</button>
+          <button value="0" class="calculator__button number">0</button>
+          <button value="." class="calculator__button number">.</button>
+          <button value="=" class="calculator__button number">=</button>
+        </div>
+
+        <div class="calculator__buttons-operators">
+          <button value="-" class="calculator__button operator">-</button>
+          <button value="+" class="calculator__button operator">+</button>
+          <button value="*" class="calculator__button operator">*</button>
+          <button value="/" class="calculator__button operator">/</button>
         </div>
       </div>
-    </section>
-  </body>
+    </div>
+  </section>
+
+
+
+
+  <script src="app.js"></script>
+
+
+</body>
+
 </html>
 </div>
