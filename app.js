@@ -10,4 +10,3 @@ function getResult() {
   // input.textContent = input.value;
   // Looking for alternatives to eval
 };
-
