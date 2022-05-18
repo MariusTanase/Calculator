@@ -8,5 +8,6 @@ function getResult() {
   console.log(numbers);
   // input.value = eval(input.value);
   // input.textContent = input.value;
+  // Looking for alternatives to eval
 };
 
