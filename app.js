@@ -15,7 +15,10 @@ function getResult() {
 let buttons = document.querySelectorAll('.calculator__button');
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener('click', function (e) {
-    let clicked = e.target.value;
+      let clicked = e.target.value;
+      if (clicked === '=') {
+        getResult();
+      }
     }
   });
 }
