@@ -19,6 +19,11 @@ function getResult() {
   let input = document.querySelector('.calculator__display-text');
   //making eval a save option to use in our function
   let operator = input.value.match(/[\D]/g);
+  //filter dots from operator
+  operator = operator.filter(function (item) {
+    return item !== '.';
+  });
+  
 
   //regex numbers to be split together with divident .
   let numbers = input.value.match(/([\d.]+)+/g);
@@ -30,13 +35,16 @@ function getResult() {
   //   return n !== '' && n !== undefined;
   // });
   // return operator and numbers array to calculate them based on operator
-  calculate(operator, numbers[0], numbers[2]);
+  calculate(operator, numbers[0], numbers[1]);
 };
 
 //calculate the result
 function calculate(operator, num1, num2) {
   let input = document.querySelector('.calculator__display-text');
   let result = 0;
+  console.log(`calculate operator ${operator}`);
+  console.log(`calculate num1 ${num1}`);
+  console.log(`calculate num2 ${num2}`);
   // if operator is empty return the numbers array
   if (operator === null) {
     return input.value;
