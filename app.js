@@ -7,12 +7,17 @@ for (let i = 0; i < buttons.length; i++) {
     let clicked = e.target.value;
     if (clicked === '=') {
       getResult();
+    }
+      else if (clicked === 'clear') {
+      clearDisplay();
+    } else if (clicked === 'PoN') {
+      //Transfrom number from positive to negative or from negative to positive
+      changeNumber(clicked);
     } else {
       sendToDisplay(clicked);
     }
   });
 };
-
 
 //Get the result from the display
 function getResult() {
@@ -23,17 +28,12 @@ function getResult() {
   operator = operator.filter(function (item) {
     return item !== '.';
   });
-  
 
   //regex numbers to be split together with divident .
   let numbers = input.value.match(/([\d.]+)+/g);
     // let numbers = input.value.split(/([\d]+)+/g);
   console.log(numbers);
 
-  // filter empty strings and undevined from numbers array
-  // numbers = numbers.filter(function (n) {
-  //   return n !== '' && n !== undefined;
-  // });
   // return operator and numbers array to calculate them based on operator
   calculate(operator, numbers[0], numbers[1]);
 };
@@ -65,6 +65,9 @@ function calculate(operator, num1, num2) {
       default:
         result = 'error';
     }
+    //Make sure the result has 2 decimal places
+    result = Math.round(result * 100) / 100;
+
     input.value = result;
     input.textContent = result;
   };
@@ -79,4 +82,18 @@ function sendToDisplay(value) {
   }
   input.value += value;
   input.textContent += value;
+}
+
+//Clear the display
+function clearDisplay() {
+  let input = document.querySelector('.calculator__display-text');
+  input.value = '';
+  input.textContent = '';
+};
+
+//making the number negative or positive - WIP - not working
+function changeNumber(value) {
+  var input = document.querySelector('.calculator__display-text');
+  input.value = input.value * -1;
+  input.textContent = input.value;
 }
