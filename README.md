@@ -21,5 +21,5 @@ Live at: https://calculator.mariustanase.com
 
 ## Screenshots
 
-![App Screenshot](https://ibb.co/4RBh3SM)
+![App Screenshot](https://i.ibb.co/5hqbwjv/Screenshot-1.png)
 
