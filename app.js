@@ -62,24 +62,11 @@ function calculate(operator, num1, num2) {
   }
 
   // if the result is a number with more than one digit after the decimal point
-  // the result is rounded to the nearest integer
-  // the number is transformed to string to remove the decimal point
-  // the string is transformed to float again
   if (result % 1 !== 0) {
     result = result.toFixed(2);
     result = parseFloat(result);
   }
 
-
-  // if the result is a number with more than one digit after the decimal point
-  // the result is rounded to the nearest integer
-  // the number is transformed to string to remove the decimal point
-  // the string is transformed to float again
-  if (result % 1 !== 0) {
-    result = result.toFixed(2);
-    result = parseFloat(result);
-  }
-  console.log(result);
   clearDisplay();
   sendToDisplay(result);
 }
