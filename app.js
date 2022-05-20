@@ -13,6 +13,8 @@ for (let i = 0; i < buttons.length; i++) {
     } else if (clicked === 'PoN') {
       //Transfrom number from positive to negative or from negative to positive
       changeNumber(clicked);
+
+      // else if for dots  for numbers and calculating the result in flaoat
     } else {
       sendToDisplay(clicked);
     }
@@ -21,58 +23,66 @@ for (let i = 0; i < buttons.length; i++) {
 
 //Get the result from the display
 function getResult() {
+//getting the result from the display and calculate them with the help of the calculate function
   let input = document.querySelector('.calculator__display-text');
-  //making eval a save option to use in our function
-  let operator = input.value.match(/[\D]/g);
-  //filter dots from operator
-  operator = operator.filter(function (item) {
-    return item !== '.';
-  });
+  let result = input.value;
+  let num1 = '';
+  let num2 = '';
+  let operator = [];
+  let temp = '';
 
-  //regex numbers to be split together with divident .
-  let numbers = input.value.match(/([\d.]+)+/g);
-    // let numbers = input.value.split(/([\d]+)+/g);
-  console.log(numbers);
+  // for loop to get the numbers and operators from the display
+  for (let i = 0; i < result.length; i++) {
+    if (result[i] === '+' || result[i] === '-' || result[i] === 'x' || result[i] === '/') {
+      operator.push(result[i]);
+      num1 = temp;
+      temp = '';
+    } else {
+      temp += result[i];
+    }
+  }
 
-  // return operator and numbers array to calculate them based on operator
-  calculate(operator, numbers[0], numbers[1]);
+  num2 = temp;
+  calculate(operator, num1, num2);
 };
 
 //calculate the result
+//the function has to calculate the negative numbers together with the positive numbers
+//has to detect if the numbers are negative or positive
 function calculate(operator, num1, num2) {
-  let input = document.querySelector('.calculator__display-text');
   let result = 0;
-  console.log(`calculate operator ${operator}`);
-  console.log(`calculate num1 ${num1}`);
-  console.log(`calculate num2 ${num2}`);
-  // if operator is empty return the numbers array
-  if (operator === null) {
-    return input.value;
-  } else {// if operator is not empty calculate the result
-    switch (operator[0]) {
-      case '+':
-        result = parseFloat(num1) + parseFloat(num2);
-        break;
-      case '-':
-        result = parseFloat(num1) - parseFloat(num2);
-        break;
-      case '*':
-        result = parseFloat(num1) * parseFloat(num2);
-        break;
-      case '/':
-        result = parseFloat(num1) / parseFloat(num2);
-        break;
-      default:
-        result = 'error';
-    }
-    //Make sure the result has 2 decimal places
-    result = Math.round(result * 100) / 100;
+  if (operator[0] === '+') {
+    result = parseFloat(num1) + parseFloat(num2);
+  } else if (operator[0] === '-') {
+    result = parseFloat(num1) - parseFloat(num2);
+  } else if (operator[0] === 'x') {
+    result = parseFloat(num1) * parseFloat(num2);
+  } else if (operator[0] === '/') {
+    result = parseFloat(num1) / parseFloat(num2);
+  }
 
-    input.value = result;
-    input.textContent = result;
-  };
-};
+  // if the result is a number with more than one digit after the decimal point
+  // the result is rounded to the nearest integer
+  // the number is transformed to string to remove the decimal point
+  // the string is transformed to float again
+  if (result % 1 !== 0) {
+    result = result.toFixed(2);
+    result = parseFloat(result);
+  }
 
+
+  // if the result is a number with more than one digit after the decimal point
+  // the result is rounded to the nearest integer
+  // the number is transformed to string to remove the decimal point
+  // the string is transformed to float again
+  if (result % 1 !== 0) {
+    result = result.toFixed(2);
+    result = parseFloat(result);
+  }
+  console.log(result);
+  clearDisplay();
+  sendToDisplay(result);
+}
 
 //Send numbers and operators from buttons to display
 function sendToDisplay(value) {
@@ -97,3 +107,12 @@ function changeNumber(value) {
   input.value = input.value * -1;
   input.textContent = input.value;
 }
+
+//function for remove button to remove the last item from display by pressing the button with the class name of 'remove' with eventlistener
+let remove = document.querySelector('.remove');
+remove.addEventListener('click', function () {
+  let input = document.querySelector('.calculator__display-text');
+  let result = input.value.slice(0, -1);
+  input.value = result;
+  input.textContent = result;
+});
