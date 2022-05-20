@@ -116,3 +116,14 @@ remove.addEventListener('click', function () {
   input.value = result;
   input.textContent = result;
 });
+
+//function for percent of the number it should return the percent of the number in percent
+//not sure if % acts like that in a normal calculator
+let percent = document.querySelector('.percent');
+percent.addEventListener('click', function () {
+  let input = document.querySelector('.calculator__display-text');
+  let result = input.value / 100;
+  input.value = result;
+  input.textContent = result;
+});
+
